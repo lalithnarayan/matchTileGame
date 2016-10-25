@@ -1,0 +1,151 @@
+/* App Class */
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.wrapper {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.header-wrap {
+    width: 100%;
+    padding: 20px;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.header-wrp {
+    position: relative;
+    height: 60px;
+    background: #000;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .6);
+    backdrop-filter: blur(5px);
+    display: table;
+    width: 100%;
+}
+
+.header-wrp .text {
+    display: table-cell;
+    vertical-align: middle;
+    color: #000;
+}
+
+body {
+    background: url(../images/page_bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.page-wrp {
+    display: table;
+    width: 100%;
+    height: calc(100vh - 108px);
+}
+
+.game-area {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.game-area-inner {
+    min-height: 200px;
+    max-width: 380px;
+    background-color: rgba(255, 255, 255, .6);
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.game-col {
+    float: left;
+    width: 75px;
+    height: 75px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.game-col img {
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    text-align: center;
+}
+
+.card__front,
+.card__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card__front,
+.card__back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.card__front {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.card__back {
+    background-color: #1e1e1e;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+
+/* click effect */
+
+.card.effect__click.flipped .card__front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.card.effect__click.flipped .card__back {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #535353;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.score-wrp {
+    text-align: center;
+    padding-top: 30px;
+}
