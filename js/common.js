@@ -5,19 +5,19 @@ myApp.controller("myController", ['$scope', '$http', '$compile', '$timeout', fun
 
     $scope.gameData;
     $scope.startPage = true;
-    $scope.clockTimeMax = 60;
+    $scope.clockTimeMax = 160;
     $scope.points = 0;
 
-    $http.get('Json/game_data.json').success(function(response) {
-        $scope.gameData = response.data;
 
-    });
 
     $scope.clickNumber = 0;
     var previousTile;
     var clickedItem
 
-
+    $http.get('Json/game_data.json').success(function(response) {
+        $scope.gameData = response.data;
+        $scope.totalMoves = response.totalMoves;
+    });
     $scope.tileClicked = function(row, col, event) {
         $scope.clickNumber++;
         clickedItem = $scope.gameData[row][col];
@@ -58,6 +58,17 @@ myApp.controller("myController", ['$scope', '$http', '$compile', '$timeout', fun
                 $scope.gameData[tile1.row][tile1.col] = {};
                 $scope.gameData[tile2.row][tile2.col] = {};
                 $scope.points = $scope.points + 10;
+                $scope.totalMoves--;
+
+                if ($scope.totalMoves == 0) {
+
+                    $scope.startPage = true;
+                    $scope.clockTimeMax = 160;
+                    $scope.gameSuccess = true;
+                    var mytimeout = $timeout($scope.onTimeout, 1000);
+                    $timeout.cancel(mytimeout);
+
+                }
 
 
             } else {
@@ -79,31 +90,31 @@ myApp.controller("myController", ['$scope', '$http', '$compile', '$timeout', fun
 
     };
 
+
+
     $scope.startGame = function() {
+        $scope.counter = 60;
         $scope.startPage = false;
+        $scope.gameSuccess = false;
+        var mytimeout = $timeout($scope.onTimeout, 1000);
+
     };
 
-
-    $scope.counter = 61;
     $scope.onTimeout = function() {
         $scope.counter--;
         if ($scope.counter >= 0) {
-            mytimeout = $timeout($scope.onTimeout, 1000);
+            var mytimeout = $timeout($scope.onTimeout, 1000);
         } else {
             $scope.resetGame();
         }
 
     }
-    var mytimeout = $timeout($scope.onTimeout, 1000);
 
     $scope.resetGame = function() {
         alert("game Over");
-        $scope.counter = 61;
-        $http.get('Json/game_data.json').success(function(response) {
-            $scope.gameData = response.data;
+        location.reload();
 
-        });
-        var mytimeout = $timeout($scope.onTimeout, 1000);
+
     }
 
 }]);

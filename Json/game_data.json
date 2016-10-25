@@ -1,6 +1,7 @@
 {
 
     "data": [
+
         [{
             "image": "images/img5.jpg",
             "row": 0,
@@ -70,5 +71,6 @@
             "row": 3,
             "col": 3
         }]
-    ]
+    ],
+    "totalMoves": 8
 }

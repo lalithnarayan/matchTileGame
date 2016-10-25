@@ -44,7 +44,16 @@
                     <button ng-click='startGame()'> Start The Game</button>
                 </div>
             </div>
-            <div id="example1"></div>
+        </div>
+        <div class="game-over" ng-if='gameSuccess'>
+            <div class="page-wrp">
+                <div class="game-area" ng-if='startPage'>
+                    <div class="game-area-inner clearfix">
+                        <h2> Level Complete</h2>
+                        <button ng-click='resetGame()'> Next Level</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
